@@ -82,24 +82,9 @@ export class Ng2SliderComponent implements ISkinable{
     private initialStartValue: any = null;
     private initialEndValue: any = null;
 
-    /*private initNormalHandlerStyle = {
-        width: '18px',
-        height: '18px',
-        border: 'solid 1px red',
-        position: 'absolute',
-        'background-color': 'yellow',
-    };*/
-    private initNormalHandlerStyle = {}
+    private initNormalHandlerStyle = {};
     private initSlidingHandlerStyle = {};
-    /*private initRangeRibbonStyle = {
-        left: '0%',
-        width: '100%',
-        height: '10px',
-        border: 'solid 1px',
-        position: 'absolute',
-        top: '4px'
-    };*/
-    private initRangeRibbonStyle = {}
+    private initRangeRibbonStyle = {};
 
     private resultNormalHandlerStyle = {};
     private resultSlidingHandlerStyle = {};
@@ -124,13 +109,6 @@ export class Ng2SliderComponent implements ISkinable{
         Object.assign(this.resultSlidingHandlerStyle, this.initSlidingHandlerStyle, this.slidingHandlerStyle);
         Object.assign(this.resultRangeRibbonStyle, this.initRangeRibbonStyle, this.rangeRibbonStyle);
 
-        // Compile range ribbon style line from object
-/*        var rangeRangeRibbonStyle = '';
-        for (let idx in this.resultRangeRibbonStyle) {
-            rangeRangeRibbonStyle += idx + ':' + this.resultRangeRibbonStyle[idx] + ';';
-        }
-        this.resultRangeRibbonStyle = rangeRangeRibbonStyle;*/
-
         this.resultRangeRibbonStyle = this.convertStyles(this.resultRangeRibbonStyle);
         if (!this.styleBlock) {
             var normal = this.convertStyles(this.resultNormalHandlerStyle);
@@ -138,11 +116,6 @@ export class Ng2SliderComponent implements ISkinable{
             var sliding = this.convertStyles(this.resultSlidingHandlerStyle);
             if (sliding) this.resultHandleStyle.push(`.slider-handle.sliding ${sliding}`);
         }
-/*        this.range = new Range({
-            element: this.ribbon.nativeElement,
-            min: this.min,
-            max: this.max
-        });*/
    }
 
     refreshInputBox(boundingRect, handle:RangeHandle) {
@@ -165,7 +138,7 @@ export class Ng2SliderComponent implements ISkinable{
     }
 
     refreshInputBoxByPercent(percent, handle:RangeHandle) {
-        let precision = this.calculatePrecision(this.stepValue)
+        let precision = this.calculatePrecision(this.stepValue);
         let value = (+this.min + (this.max-this.min)*percent/100).toFixed(precision);
         switch (handle) {
             case RangeHandle.Start:
@@ -347,7 +320,7 @@ export class Ng2SliderComponent implements ISkinable{
         // Example of using callback function before redraw
         event.instance.checkXBeforeRedraw = function(x, y) {
             return true;
-        }
+        };
         this.handlers[name] = event.instance;
         // if (name == 'Start') this.valueChanged({}, RangeHandle.Start);
         // if (name == 'End') this.valueChanged({}, RangeHandle.End);

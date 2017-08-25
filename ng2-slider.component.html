@@ -1,7 +1,6 @@
 <div class="slider-input-block">
     <input type="number"
            id="{{id + '-start-value'}}"
-           npm publish
            name="{{id + '-start-value'}}"
            [step]="stepValue"
            [min]="min"
@@ -35,7 +34,7 @@
     </div>
     <span #start
           slideAble
-          slideDirection="horisontal"
+          slideDirection="vertical"
           boundElement="{{id + '-ribbon'}}"
           dynamicRightLimit="{{(isRange == true) ? id + '-right-handle' : null}}"
           (onStopSliding)="onStopSliding($event)"
@@ -50,7 +49,7 @@
     <span *ngIf="isRange"
           #end
           slideAble
-          slideDirection="horisontal"
+          slideDirection="vertical"
           boundElement="{{id + '-ribbon'}}"
           [dynamicLeftLimit]="id + '-left-handle'"
           (onStopSliding)="onStopSliding($event)"
